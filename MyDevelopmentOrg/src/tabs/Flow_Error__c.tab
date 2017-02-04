@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomTab xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customObject>true</customObject>
+    <description>This is the tab for accessing errors that occur during flow.  Will not catch errors that do not allow the flow to continue, in which case, it will be sent to the activating user of the process / flow.</description>
+    <mobileReady>false</mobileReady>
+    <motif>Custom25: Alarm clock</motif>
+</CustomTab>

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>This is the flow that freezes the user</description>
+    <formulas>
+        <description>This is the case subject</description>
+        <name>fSubject</name>
+        <dataType>String</dataType>
+        <expression>{!fUserName} &amp; &quot; has been automatically frozen&quot;</expression>
+    </formulas>
+    <formulas>
+        <description>This is a formula to put the User&apos;s Name into the case subject.</description>
+        <name>fUserName</name>
+        <dataType>String</dataType>
+        <expression>{!sObjUser.FirstName} &amp; &quot; &quot; &amp; {!sObjUser.LastName}</expression>
+    </formulas>
+    <interviewLabel>Freeze User {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Freeze User</label>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <name>Freeze_User</name>
+        <label>Freeze User</label>
+        <locationX>106</locationX>
+        <locationY>93</locationY>
+        <connector>
+            <targetReference>Create_Frozen_User_Case</targetReference>
+        </connector>
+        <filters>
+            <field>UserId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>sObjUser.Id</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>IsFrozen</field>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputAssignments>
+        <object>UserLogin</object>
+    </recordUpdates>
+    <startElementReference>Freeze_User</startElementReference>
+    <subflows>
+        <name>Create_Frozen_User_Case</name>
+        <label>Create Frozen User Case</label>
+        <locationX>110</locationX>
+        <locationY>234</locationY>
+        <flowName>Create_Case</flowName>
+        <inputAssignments>
+            <name>varDescription</name>
+            <value>
+                <stringValue>This user has automatically been frozen by the system. Search metadata components, i.e. workflow, approval processes, and reassign any necessary accounts/opportunities to new owners when deactivating.</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <name>varUserId</name>
+            <value>
+                <elementReference>sObjUser.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <name>varRecordTypeDevName</name>
+            <value>
+                <stringValue>User_Administration</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <name>varOrigin</name>
+            <value>
+                <stringValue>System Generated</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <name>varPriority</name>
+            <value>
+                <stringValue>Medium</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <name>varReason</name>
+            <value>
+                <stringValue>User Offboarding</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <name>varSubject</name>
+            <value>
+                <elementReference>fSubject</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <name>varQueueDevName</name>
+            <value>
+                <stringValue>System_Administrators</stringValue>
+            </value>
+        </inputAssignments>
+    </subflows>
+    <variables>
+        <description>This is the user passed into the flow</description>
+        <name>sObjUser</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+        <objectType>User</objectType>
+    </variables>
+</Flow>
