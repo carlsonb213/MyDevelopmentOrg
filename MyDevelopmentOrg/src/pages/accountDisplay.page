@@ -1,0 +1,28 @@
+<apex:page standardController="Account">
+    <p><apex:outputLink value="http://developer.force.com/">Click me!</apex:outputLink></p>
+    <p><apex:outputLink value="{! $Page.accountDisplay }">I am me!</apex:outputLink></p>
+
+    <apex:relatedList list="Cases"/>
+    <apex:pageBlock title="Custom Output">
+        <apex:pageBlockSection title="Customer Section Title"> 
+            <apex:outputField value="{!account.name}"/>
+            <apex:outputField value="{!account.owner.name}"/>
+        </apex:pageBlockSection>
+    </apex:pageBlock>
+    <apex:relatedList list="Contacts"/>
+    <apex:pageBlock title="My Account Contacts">
+        <apex:pageBlockTable value="{! account.contacts}" var="item"> 
+        <apex:column value="{! item.name}"/> 
+        <apex:column value="{! item.phone}"/>
+        <apex:column value="{! item.email}"/>
+        </apex:pageBlockTable>        
+    </apex:pageBlock>
+    <apex:detail relatedList="false" />
+
+    <b>Hello {! $User.FirstName} !</b>
+    <p>You are viewing the {! account.name} account.</p>
+    <p>Here's the Ticker Symbol field: {! account.tickersymbol }</p>
+    <p>Here's the Owner of the account: {! account.owner.name } </p> 
+    <p>This account was last modified by: {! account.LastModifiedBy.name } </p>
+
+</apex:page>

@@ -1,0 +1,37 @@
+<apex:page sidebar="true" showHeader="true">
+    <b>Hello {! $User.FirstName & ' ' & $User.LastName }
+    <p> Today's Date is {! Today()}</p>
+    <p> Tomorrow's Date will be {! Today()+1 }</p>
+    <p> Next week it will be {! Today() + 7}</p>
+    <p> Right Now it is {! Now()}</p>
+    <p> The year today is {! Year(Today())}</p>
+    <p> Tomorrow will be day number {! day(today()+1)} of this month</p>
+    <p> Let's find a maximum: {! max(1,2,3,4,5,6,5,4,3,2,1)}</p>
+    <p> The square root of 48 is {! sqrt(48)}</p>
+    <p> The square root of 72 is {! sqrt(72)}</p>
+    <p> The square root of 81 is {! sqrt(81)}</p>
+    <p> Is force.com in salesforce.com? {! contains('salesforce.com','force.com')}</p>
+    <p> {! if(contains('salesforce.com','force.com'),'Yep','Nah') }</p>
+    <p>{! "Today is " & if(day(today()) > 14, "After ", "Before or on ") & "the 14th"}</p>
+    </b>
+    <apex:pageBlock title="A Block Title">
+        <apex:pageBlockSection title="A Section Title">
+      
+              <h1>I'm three components deep</h1>
+
+       </apex:pageBlockSection>
+       <apex:pageBlockSection title="B Section Title">
+           <h1>I'm in deep again</h1>
+       </apex:pageBlockSection>
+       <apex:pageBlockButtons title="A Button Title" >
+       Hello Button
+       </apex:pageBlockButtons>
+       <apex:pageBlockSection title="Another Section Title">
+       Hello World!
+       <apex:pageBlockSectionItem dataTitle="BlockSectionItem Title">
+        </apex:pageBlockSectionItem>
+      </apex:pageBlockSection>
+       
+    </apex:pageBlock>
+    <h1>Hello World!</h1>
+</apex:page>
