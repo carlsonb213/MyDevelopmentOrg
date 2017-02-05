@@ -10,7 +10,8 @@
         component.set("v.item.Packed__c", true);
         console.log("Item After: " + JSON.stringify(item));
         var btnClicked = event.getSource();         // the button
+        console.log("packItem Button Disabled : "); // + btnClicked.disabled);
         btnClicked.set("v.disabled", true);
-        console.log("packItem:  Packed");
+//        console.log("packItem Button Disabled : " + btnClicked.disabled);
     }
 })
