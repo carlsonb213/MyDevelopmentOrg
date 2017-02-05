@@ -1,5 +1,7 @@
 <aura:component >
-    <aura:attribute name="item" type="Camping_Item__c" required="true"/>
+    <aura:attribute name="item" type="Camping_Item__c" required="true" 
+      default="{'sobjectType':'Camping_Item__c', 'Name':'FlashLight', 'Price__c': 10, 'Quantity__c': 5, 'Packed__c': false}"/> 
+
     
     <p>Name:
         <ui:outputText value="{!v.item.Name}"/>
@@ -16,5 +18,8 @@
     <p>Packed?:
         <ui:outputCheckbox value="{!v.item.Packed__c}"/>
     </p>
+    
+    <ui:button label="Packed!" press="{!c.packItem}" />
+
     
 </aura:component>

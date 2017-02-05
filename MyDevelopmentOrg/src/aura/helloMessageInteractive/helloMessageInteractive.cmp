@@ -7,9 +7,12 @@
     <div>
         <ui:button label="You look nice today."
             press="{!c.handleClick}"/>
- 
+
+        <ui:button label="I love my wife!"
+            press="{!c.handleClick2}"/>
+        
         <ui:button label="Today is going to be a great day!"
-            press="{!c.handleClick}"/>
+            press="{!c.handleClick3}"/>
     </div>
  
 </aura:component>
