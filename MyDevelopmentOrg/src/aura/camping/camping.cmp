@@ -1,5 +1,4 @@
 <aura:component >
     <c:campingHeader />
-    <c:campingList />
-    <c:helloMessage message="You look nice today."/>
+    <!-- c:campingList / -->
 </aura:component>
